@@ -1,7 +1,7 @@
 package View;
 
-import Helper.Config;
-import Helper.Helper;
+import Core.Config;
+import Core.Helper;
 
 import javax.swing.*;
 
