@@ -1,6 +1,6 @@
 package View;
 
-import Core.Config;
+import Core.Database;
 import Core.Helper;
 
 import javax.swing.*;
@@ -25,7 +25,7 @@ public class LoginUI extends JFrame {
         setSize(600, 600);
         setLocation(Helper.screenCenterLocation("x", getSize()), Helper.screenCenterLocation("y", getSize()));
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        setTitle(Config.PROJECT_TITLE);
+        setTitle(Database.PROJECT_TITLE);
         setVisible(true);
     }
 

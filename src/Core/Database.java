@@ -10,15 +10,15 @@ import java.sql.SQLException;
  * E-mail: gunesserkan883@gmail.com
  * Creation Date: 4/2/2024 9:32 PM
  */
-public class Config {
+public class Database {
 
-    private static Config instance = null;
+    private static Database instance = null;
     private Connection connection = null;
     private final String DB_URL = "jdbc:postgresql://localhost:5432/AirportOrganizationAutomation";
     private final String DB_USERNAME = "postgres";
     private final String DB_PASSWORD = "12345";
 
-    private Config() {
+    private Database() {
         try {
             this.connection = DriverManager.getConnection(DB_URL, DB_USERNAME, DB_PASSWORD);
         } catch (SQLException exception) {
@@ -33,7 +33,7 @@ public class Config {
     public static Connection getIntance() {
         try {
             if (instance == null || instance.getConnection().isClosed()) {
-                instance = new Config();
+                instance = new Database();
             }
         } catch (SQLException exception) {
             System.out.println(exception);
