@@ -17,7 +17,7 @@ public class AccountDao {
 
     public Account findByLogin(String username,String password,int accountType) throws SQLException {
         Account account=null;
-        String sql="SELECT * FROM account WHERE username=? AND password=? AND account_ype=?";
+        String sql="SELECT * FROM account WHERE username=? AND password=? AND account_type=?";
         PreparedStatement preparedStatement= this.connection.prepareStatement(sql);
         preparedStatement.setString(1,username);
         preparedStatement.setString(2,password);
