@@ -1,9 +1,12 @@
 package View;
 
-import Core.Database;
+import Business.AccountManager;
 import Core.Helper;
+import Entity.Account;
 
 import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 /**
  * Author: gunes
@@ -13,20 +16,37 @@ import javax.swing.*;
  */
 public class LoginUI extends JFrame {
     private JPanel wrapper;
-    private JLabel lbl_welcome;
+    private JPanel pnl_top;
+    private JLabel lbl_title;
+    private JPanel pnl_bottom;
     private JTextField fld_user_name;
-    private JTextField fld_password;
     private JButton btn_login;
-    private JLabel lbl_user_name;
-    private JLabel lbl_password;
-
+    private JLabel lnl_user_name;
+    private JLabel lbl_pwd;
+    private JPasswordField fld_pwd;
+    private JComboBox cmb_user_type;
+    private JLabel lbl_account_type;
+    private AccountManager accountManager;
     public LoginUI() {
+        this.accountManager=new AccountManager();
         this.add(wrapper);
         setSize(600, 600);
         setLocation(Helper.screenCenterLocation("x", getSize()), Helper.screenCenterLocation("y", getSize()));
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        setTitle(Database.PROJECT_TITLE);
+        setTitle(Helper.PROJECT_TITLE);
         setVisible(true);
+        btn_login.addActionListener(e -> {
+            if(Helper.isFieldEmpty(fld_user_name)||Helper.isFieldEmpty(fld_pwd)||cmb_user_type.getSelectedIndex()==0){
+                Helper.showMessage("Lütfen boş alanları doldurun!");
+            }else {
+                Account account=accountManager.findByLogin(fld_user_name.getText(),fld_pwd.getText(),cmb_user_type.getSelectedIndex());
+                if(account==null){
+                    Helper.showMessage("Kullanıcı Bulunamadı !");
+                }else {
+                    Helper.showMessage("done");
+                }
+            }
+        });
     }
 
     public static void main(String[] args) {
