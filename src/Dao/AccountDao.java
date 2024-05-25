@@ -25,8 +25,6 @@ public class AccountDao {
         ResultSet result=preparedStatement.executeQuery();
         if(result.next()){
             account=this.match(result);
-        }else {
-            throw new SQLException();
         }
         return account;
     }
