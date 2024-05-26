@@ -40,6 +40,18 @@ public class AccountDao {
         }
         return accounts;
     }
+    public int deleteById(int id) throws SQLException {
+        String sql="DELETE FROM account WHERE id=?";
+        PreparedStatement preparedStatement=this.connection.prepareStatement(sql);
+        preparedStatement.setInt(1,id);
+        int result=preparedStatement.executeUpdate();
+        if(result>0){
+            return 1;
+        }
+        else {
+            return 0;
+        }
+    }
     public Account match(ResultSet result) throws SQLException {
         Account account=new Account();
         account.setId(result.getInt("account_id"));

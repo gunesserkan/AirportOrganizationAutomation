@@ -41,7 +41,8 @@ public class LoginUI extends JFrame {
                 if(account==null){
                     Helper.showMessage("Kullanıcı Bulunamadı !");
                 }else {
-                    Helper.showMessage("done");
+                    new DashBoard(account);
+                    this.dispose();
                 }
             }
         });
