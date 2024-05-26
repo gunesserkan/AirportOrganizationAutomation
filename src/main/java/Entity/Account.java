@@ -8,6 +8,8 @@ public class Account {
     private String createdAt;
     private int accountType;
 
+    public Account() {}
+
     public Account(int id, String username, String password, String email,String createdAt,int accountType) {
         this.id = id;
         this.username = username;

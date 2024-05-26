@@ -12,6 +12,7 @@ import java.awt.*;
 
 public class Helper {
 
+    public static final String PROJECT_TITLE="Airport Organization Automation";
     public static void setLayout() {
         for (UIManager.LookAndFeelInfo info : UIManager.getInstalledLookAndFeels()) {
             if ("Nimbus".equals(info.getName())) {
