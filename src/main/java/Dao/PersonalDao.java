@@ -1,8 +1,7 @@
 package Dao;
 
 import Core.Database;
-import Entity.Personel;
-import Entity.Personel;
+import Entity.Personal;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -16,8 +15,8 @@ public class PersonalDao {
         this.connection = Database.getIntance();
     }
 
-    public Personel findById(int personalId) throws SQLException {
-        Personel personal = null;
+    public Personal findById(int personalId) throws SQLException {
+        Personal personal = null;
         String sql = "SELECT * FROM personal WHERE persoanl_id=?";
         PreparedStatement preparedStatement = this.connection.prepareStatement(sql);
         preparedStatement.setInt(1, personalId);
@@ -29,22 +28,22 @@ public class PersonalDao {
     }
 
 
-    public void insert(Personel personel) throws SQLException {
+    public void insert(Personal personal) throws SQLException {
         String sql = "INSERT INTO personal (first_name, last_name, birth_date,gender) VALUES (?, ?, ?, ?)";
         PreparedStatement preparedStatement = this.connection.prepareStatement(sql);
-        preparedStatement.setString(1, personel.getFirstname());
-        preparedStatement.setString(2, personel.getLastname());
-        preparedStatement.setDate(3, new java.sql.Date(personel.getBirthDate().getTime()));
-        preparedStatement.setString(4, Character.toString(personel.getGender()));
+        preparedStatement.setString(1, personal.getFirstname());
+        preparedStatement.setString(2, personal.getLastname());
+        preparedStatement.setDate(3, new java.sql.Date(personal.getBirthDate().getTime()));
+        preparedStatement.setString(4, Character.toString(personal.getGender()));
         preparedStatement.executeUpdate();
     }
-    public void update(Personel personel) throws SQLException {
+    public void update(Personal personal) throws SQLException {
         String sql = "UPDATE personal SET first_name=?, last_name=?, birth_date=?, gender=? WHERE personal_id=?";
         PreparedStatement preparedStatement = this.connection.prepareStatement(sql);
-        preparedStatement.setString(1, personel.getFirstname());
-        preparedStatement.setString(2, personel.getLastname());
-        preparedStatement.setDate(3, new java.sql.Date(personel.getBirthDate().getTime()));
-        preparedStatement.setString(4, Character.toString(personel.getGender()));
+        preparedStatement.setString(1, personal.getFirstname());
+        preparedStatement.setString(2, personal.getLastname());
+        preparedStatement.setDate(3, new java.sql.Date(personal.getBirthDate().getTime()));
+        preparedStatement.setString(4, Character.toString(personal.getGender()));
         preparedStatement.executeUpdate();
     }
 
@@ -54,8 +53,8 @@ public class PersonalDao {
         preparedStatement.setInt(1, personalId);
         preparedStatement.executeUpdate();
     }
-    private Personel match(ResultSet result) throws SQLException {
-        Personel personal = new Personel(
+    private Personal match(ResultSet result) throws SQLException {
+        Personal personal = new Personal(
                 result.getInt("personal_id"),
                 result.getString("first_name"),
                 result.getString("last_name"),
