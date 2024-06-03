@@ -2,14 +2,14 @@ package Entity;
 
 import java.util.Date;
 
-public class Personel {
+public class Personal {
     private int  id;
     private String firstname;
     private String lastname;
     private Date birthDate;
     private char gender;
 
-    public Personel(int id, String firstname, String lastname, Date birthDate, char gender) {
+    public Personal(int id, String firstname, String lastname, Date birthDate, char gender) {
         this.id = id;
         this.firstname = firstname;
         this.lastname = lastname;
