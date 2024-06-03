@@ -31,10 +31,10 @@ public class AccountDaoTest {
     public void findByLogin() {
         // Test case for findByLogin method
         try {
-            Account account = accountDao.findByLogin("gunes", "12345", 1);
+            Account account = accountDao.findByLogin("ali_yilmaz", "ali_yilmaz1", 1);
             assertNotNull(account); // Check if account is not null
-            assertEquals("gunes", account.getUsername()); // Check if username matches
-            assertEquals("12345", account.getPassword()); // Check if password matches
+            assertEquals("ali_yilmaz", account.getUsername()); // Check if username matches
+            assertEquals("ali_yilmaz1", account.getPassword()); // Check if password matches
             assertEquals(1, account.getAccountType()); // Check if account type matches
         } catch (SQLException e) {
             fail("Exception thrown: " + e.getMessage()); // Fail the test if an exception is thrown
