@@ -1,12 +1,14 @@
 package Dao;
 
 import Core.Database;
+import Entity.Address;
 import Entity.Personal;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 public class PersonalDao {
     private Connection connection;
@@ -17,7 +19,7 @@ public class PersonalDao {
 
     public Personal findById(int personalId) throws SQLException {
         Personal personal = null;
-        String sql = "SELECT * FROM personal WHERE persoanl_id=?";
+        String sql = "SELECT * FROM personal WHERE personal_id=?";
         PreparedStatement preparedStatement = this.connection.prepareStatement(sql);
         preparedStatement.setInt(1, personalId);
         ResultSet result = preparedStatement.executeQuery();
@@ -25,6 +27,17 @@ public class PersonalDao {
             personal = this.match(result);
         }
         return personal;
+    }
+    public ArrayList<Personal> findByPersonalId(int personalId) throws SQLException {
+        ArrayList<Personal> personals = new ArrayList<>();
+        String sql = "SELECT * FROM personal WHERE personal_id=?";
+        PreparedStatement preparedStatement = this.connection.prepareStatement(sql);
+        preparedStatement.setInt(1, personalId);
+        ResultSet result = preparedStatement.executeQuery();
+        while (result.next()) {
+            personals.add(this.match(result));
+        }
+        return personals;
     }
 
 
